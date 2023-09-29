@@ -1,10 +1,20 @@
 package com.demo.project.model;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+@Entity
+@Table
 public class Vendor {
+
+    @Id
     private String id;
     private String name;
     private String address;
     private String phoneNumber;
+
+    public Vendor() {
+    }
 
     public Vendor(String id, String name, String address, String phoneNumber) {
         this.id = id;
