@@ -1,5 +1,7 @@
 package com.demo.project.service.impl;
 
+import com.demo.project.exception.VendorExceptionHandler;
+import com.demo.project.exception.VendorNotFoundException;
 import com.demo.project.repository.VendorRepository;
 import com.demo.project.model.Vendor;
 import com.demo.project.service.VendorService;
@@ -18,6 +20,9 @@ public class VendorServiceImpl implements VendorService {
 
     @Override
     public Vendor getDetails(String id) {
+        if(vendorRepository.findById(id).isEmpty()){
+            throw new VendorNotFoundException("Requested vendor does not exist");
+        }
        return vendorRepository.findById(id).get();
     }
 
