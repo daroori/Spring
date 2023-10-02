@@ -1,6 +1,5 @@
 package com.demo.project.service.impl;
 
-import com.demo.project.exception.VendorExceptionHandler;
 import com.demo.project.exception.VendorNotFoundException;
 import com.demo.project.repository.VendorRepository;
 import com.demo.project.model.Vendor;

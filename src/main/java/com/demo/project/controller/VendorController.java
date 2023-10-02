@@ -1,7 +1,10 @@
 package com.demo.project.controller;
 
 import com.demo.project.model.Vendor;
+import com.demo.project.responseHandler.VendorResponseHandler;
 import com.demo.project.service.VendorService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,8 +20,10 @@ public class VendorController {
     }
 
     @GetMapping("{id}")
-    public Vendor getVendorDetails(@PathVariable("id") String id){
-        return vendorService.getDetails(id);
+    public ResponseEntity<Object> getVendorDetails(@PathVariable("id") String id){
+        return VendorResponseHandler.responseBuilder("Below are the requested Vendor Details",
+                HttpStatus.OK,
+                vendorService.getDetails(id));
     }
 
     @GetMapping()
